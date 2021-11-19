@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">PerFin Management</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_value_hint">Valor</string>
+    <string name="add_description_hint">Descrição</string>
+    <string name="add_category_hint">Categoria</string>
+    <string name="add_button">Adicionar</string>
+    <string name="nav_list_expense">Listar Despesa</string>
+    <string name="nav_add_expense">Adicionar Despesa</string>
+    <string name="toast_expense_added_successfully">Despesa adicionada com sucesso</string>
+    <string name="toast_fill_out_all_fields">Preencha todos os campos</string>
+</resources>
