@@ -12,14 +12,14 @@ import kotlinx.coroutines.launch
 
 class ExpenseViewModel(application: Application): AndroidViewModel(application) {
 
-    private val readAllExpense: LiveData<List<Expense>>
+    val ReadAllData: LiveData<List<Expense>>
     private val repository: ExpenseRepository //variável do repositório
 
     init { //É sempre o primeiro a ser executado quando o ExpenseViewModel é chamado
         val expenseDao = PerFinDatabase.getDatabase(application)
             .expenseDao() //aceder à ExpenseDao através do perfinDatabase
         repository = ExpenseRepository(expenseDao)
-        readAllExpense = repository.readAllExpense
+        ReadAllData = repository.readAllExpense
     }
 
     fun addExpense(expense: Expense){
