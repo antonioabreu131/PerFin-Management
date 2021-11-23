@@ -13,4 +13,9 @@
     <string name="update_button">Atualizar</string>
     <string name="nav_update_expense">Atualizar despesa</string>
     <string name="expanse_updated_successfully">Despesa atualizada com sucesso</string>
+    <string name="yes">Sim</string>
+    <string name="no">Não</string>
+    <string name="delete">Apagar</string>
+    <string name="expense_removed_successfully">Removida com sucesso</string>
+    <string name="allExpenses_removed_successfully">Removida com sucesso</string>
 </resources>

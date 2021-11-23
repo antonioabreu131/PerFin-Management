@@ -13,6 +13,12 @@ interface ExpenseDao {
     @Update
     fun updateExpense(expense: Expense)
 
+    @Delete
+    fun deleteExpense(expense: Expense)
+
+    @Query("DELETE FROM Expense")
+    fun deleteAllExpenses()
+
     @Query("SELECT * FROM Expense ORDER BY id ASC")
     fun readAllExpenses(): LiveData<List<Expense>>
 

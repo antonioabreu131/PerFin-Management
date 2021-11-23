@@ -1,11 +1,10 @@
 package com.example.perfinmanagement.fragments.update
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -38,6 +37,9 @@ class UpdateFragment : Fragment() {
             updateItem()
         }
 
+        //Add Menu
+        setHasOptionsMenu(true)
+
         return view
     }
 
@@ -65,6 +67,36 @@ class UpdateFragment : Fragment() {
 
     private fun inputCheck(valueExpense: String, descriptionExpense: String, categoryExpense: String) : Boolean{
         return !(TextUtils.isEmpty(valueExpense) && TextUtils.isEmpty(descriptionExpense) && TextUtils.isEmpty(categoryExpense))
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.delete_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_delete){
+            deleteUser()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun deleteUser() {
+        val builder = AlertDialog.Builder(requireContext())
+
+        builder.setPositiveButton(getString(R.string.yes)){ _, _ ->
+            mExpenseViewModel.deleteExpense(args.currentExpense)
+            Toast.makeText(
+                requireContext(),
+                "${(getString(R.string.expense_removed_successfully))}: ${args.currentExpense.category_expense}",
+                Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_updateFragment_to_listFragment)
+        }
+        builder.setNegativeButton(getString(R.string.no)) { _, _ ->}
+
+        builder.setTitle("Delete ${args.currentExpense.category_expense}?")
+        builder.setMessage("Deseja realmente apagar a despesa ${args.currentExpense.category_expense} ")
+        builder.create().show()
+
     }
 
 }

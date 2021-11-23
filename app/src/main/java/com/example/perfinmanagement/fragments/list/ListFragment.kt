@@ -1,11 +1,11 @@
 package com.example.perfinmanagement.fragments.list
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -43,6 +43,38 @@ class ListFragment : Fragment() {
             findNavController().navigate(R.id.action_listFragment_to_addFragment)
         }
 
+        //Add menu
+        setHasOptionsMenu(true)
+
         return view
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.delete_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.menu_delete){
+            deleteAllUsers()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun deleteAllUsers() {
+        val builder = AlertDialog.Builder(requireContext())
+
+        builder.setPositiveButton(getString(R.string.yes)){ _, _ ->
+            mExpenseViewModel.deleteAllExpenses()
+            Toast.makeText(
+                requireContext(),
+                "${(getString(R.string.allExpenses_removed_successfully))}",
+                Toast.LENGTH_SHORT).show()
+
+        }
+        builder.setNegativeButton(getString(R.string.no)) { _, _ ->}
+
+        builder.setTitle("Delete tudo?")
+        builder.setMessage("Deseja realmente apagar tudo?")
+        builder.create().show()
     }
 }
