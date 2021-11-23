@@ -10,4 +10,7 @@
     <string name="nav_add_expense">Adicionar Despesa</string>
     <string name="toast_expense_added_successfully">Despesa adicionada com sucesso</string>
     <string name="toast_fill_out_all_fields">Preencha todos os campos</string>
+    <string name="update_button">Atualizar</string>
+    <string name="nav_update_expense">Atualizar despesa</string>
+    <string name="expanse_updated_successfully">Despesa atualizada com sucesso</string>
 </resources>

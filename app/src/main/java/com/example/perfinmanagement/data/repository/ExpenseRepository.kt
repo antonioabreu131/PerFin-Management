@@ -11,4 +11,8 @@ class ExpenseRepository(private val expenseDao: ExpenseDao) {
     suspend fun addExpense(expense: Expense){
         expenseDao.addExpense(expense)
     }
+
+    suspend fun updateExpense(expense: Expense){
+        expenseDao.updateExpense(expense)
+    }
 }

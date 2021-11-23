@@ -27,4 +27,10 @@ class ExpenseViewModel(application: Application): AndroidViewModel(application) 
             repository.addExpense(expense)
         }
     }
+
+    fun updateExpense(expense: Expense){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateExpense(expense)
+        }
+    }
 }
